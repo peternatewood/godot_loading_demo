@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://materials/gold.tres" type="Material" id=1]
+
+[sub_resource type="SphereShape" id=3]
+radius = 0.5
+
+[sub_resource type="CylinderMesh" id=2]
+top_radius = 0.5
+bottom_radius = 0.5
+
+[node name="Coin" type="RigidBody"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-009, -1, 0, 0.1, -4.37114e-008, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )
