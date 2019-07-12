@@ -5,6 +5,7 @@ const TIME_MAX: int = 10
 var current_scene
 var loader
 var loading_bar
+var load_scene
 var wait_frames: int
 
 func _ready():
@@ -27,6 +28,13 @@ func _process(delta):
 
 		if error == ERR_FILE_EOF:
 			print("Load complete")
+
+			# Unload the loading bar scene
+			var root = get_tree().get_root()
+			current_scene = root.get_child(root.get_child_count() - 1)
+			current_scene.queue_free()
+
+			# Set the new scene
 			var resource = loader.get_resource()
 			loader = null
 			_set_new_scene(resource)
